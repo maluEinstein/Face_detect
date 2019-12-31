@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_login"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_marginTop="8dp"
@@ -69,7 +69,7 @@
     <!--标准线-->
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editText_password"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -77,19 +77,19 @@
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="@+id/editText1"
-        app:layout_constraintStart_toStartOf="@+id/editText1"
+        app:layout_constraintEnd_toEndOf="@+id/editText_accont"
+        app:layout_constraintStart_toStartOf="@+id/editText_accont"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editText_accont"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/editText_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -117,11 +117,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password"
         app:layout_constraintVertical_bias="0.62" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_registered"
         android:layout_width="150dp"
         android:layout_height="80dp"
         android:layout_marginStart="36dp"

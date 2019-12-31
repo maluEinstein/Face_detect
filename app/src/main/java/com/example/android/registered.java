@@ -27,7 +27,7 @@ public class registered extends AppCompatActivity {
         password = (EditText) findViewById(R.id.editText3);
         email = (EditText) findViewById(R.id.editText4);
         phone = (EditText) findViewById(R.id.editText5);
-        Button adddata = (Button) findViewById(R.id.button3);
+        Button adddata = (Button) findViewById(R.id.button_userRegistered);
         adddata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

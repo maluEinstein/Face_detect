@@ -7,11 +7,11 @@
     tools:context=".Function_window">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/takephotoByAlbum"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="相册中选择"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintBottom_toTopOf="@+id/takephotoByCamera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline6" />
@@ -24,7 +24,7 @@
         app:layout_constraintGuide_percent="0.8016416" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView_DefaultPicture"
         android:layout_width="match_parent"
         android:layout_height="550dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
@@ -34,7 +34,7 @@
         app:srcCompat="@drawable/face_test" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/button_detect"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -42,15 +42,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintTop_toBottomOf="@+id/takephotoByCamera" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/takephotoByCamera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="相机拍摄"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
+        app:layout_constraintBottom_toTopOf="@+id/button_detect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/takephotoByAlbum" />
 </android.support.constraint.ConstraintLayout>

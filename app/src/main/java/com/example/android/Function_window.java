@@ -4,16 +4,12 @@ package com.example.android;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -23,7 +19,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,45 +28,39 @@ import android.widget.Toast;
 import com.baidu.aip.face.AipFace;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOError;
 import java.io.IOException;
-import java.sql.SQLSyntaxErrorException;
 import java.util.HashMap;
-import java.util.logging.LogRecord;
 
 public class Function_window extends AppCompatActivity {
     public static final int TAKE_PHOTO = 1;
     public static final int CHOOSE_PHOTO = 2;
     private ImageView picture;
-    private Button takephoto1;
-    private Button takephoto2;
+    private Button takephotoByAlbum;
+    private Button takephotoByCamera;
     private Button detect;
     private Uri imageuri;
     private static final String APP_ID = "15964243";
     private static final String API_KEY = "zycXczDprBLdjAGyno2Mw1Yq";
     private static final String SECRET_KEY = "f4aToMo2SEaHMV8i02GLoot0QLB7x6yQ";
-    private String r;
     private int face_resultNum = -1;  //图像中人脸数量
     private String face_age = null, face_gender = null, face_race = null, face_beauty = null, face_expression = null;
     private JSONObject res;
     private Bitmap bitmap = null;
-    private String asd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_function_window);
-        picture = (ImageView) findViewById(R.id.imageView2);
-        takephoto1 = (Button) findViewById(R.id.button4);                //1从相册中选择
-        takephoto2 = (Button) findViewById(R.id.button6);                //2相机拍摄
-        detect = (Button) findViewById(R.id.button5);
-        takephoto1.setOnClickListener(new View.OnClickListener() {
+        picture = (ImageView) findViewById(R.id.imageView_DefaultPicture);
+        takephotoByAlbum = (Button) findViewById(R.id.takephotoByAlbum);                //1从相册中选择
+        takephotoByCamera = (Button) findViewById(R.id.takephotoByCamera);                //2相机拍摄
+        detect = (Button) findViewById(R.id.button_detect);
+        takephotoByAlbum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(Function_window.this,
@@ -83,7 +72,7 @@ public class Function_window extends AppCompatActivity {
                 }
             }
         });
-        takephoto2.setOnClickListener(new View.OnClickListener() {
+        takephotoByCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 File outputimage = new File(getExternalCacheDir(), "output_image.jpg");       //创建File对象，用于存储拍照后的图片

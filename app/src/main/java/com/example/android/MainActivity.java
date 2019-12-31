@@ -1,11 +1,9 @@
 package com.example.android;
 
-import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -21,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button1 = (Button) findViewById(R.id.button2);
-        Button button2 = (Button) findViewById(R.id.button);
-        etname = (EditText) findViewById(R.id.editText1);              //editText1是用户名
-        etpassword = (EditText) findViewById(R.id.editText);           //editText是密码
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button button_registered = (Button) findViewById(R.id.button_registered);
+        Button button_login = (Button) findViewById(R.id.button_login);
+        etname = (EditText) findViewById(R.id.editText_accont);              //editText1是用户名
+        etpassword = (EditText) findViewById(R.id.editText_password);           //editText是密码
+        button_registered.setOnClickListener(new View.OnClickListener() {
                 @Override
             public void onClick(View v) {
                 Toast.makeText(MainActivity.this, "进入注册界面", Toast.LENGTH_SHORT).show();
@@ -33,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        button2.setOnClickListener(new View.OnClickListener() {
+        button_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dbhelper = new Dbhelper(MainActivity.this, "db_work", null, 1);
