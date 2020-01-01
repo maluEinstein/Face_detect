@@ -149,6 +149,14 @@ public class Function_window extends AppCompatActivity {
                         e.printStackTrace();
                     }
                 }
+            case CHOOSE_PHOTO:
+                try {
+                    bitmap = BitmapFactory.decodeStream(
+                            getContentResolver().openInputStream(data.getData()));
+                    picture.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 break;
@@ -160,21 +168,26 @@ public class Function_window extends AppCompatActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            face_resultNum = 0;
+            face_gender = null;
+            face_age=null;
+            face_beauty=null;
+            face_expression=null;
             if (msg.what == 1) {
                 JSONObject res = (JSONObject) msg.obj;
                 try {
                     res = res.getJSONObject("result");
                     JSONArray resJSONArray = res.getJSONArray("face_list");
                     face_resultNum = res.getInt("face_num");
-                    res=resJSONArray.getJSONObject(0);
+                    res = resJSONArray.getJSONObject(0);
                     System.out.println(res.toString());
-                    face_gender=res.getString("gender");
-                    face_age=res.getString("age");
-                    face_beauty=res.getString("beauty");
-                    JSONObject expression=res.getJSONObject("expression");
-                    face_expression=expression.getString("type");
+                    face_gender = res.getString("gender");
+                    face_age = res.getString("age");
+                    face_beauty = res.getString("beauty");
+                    JSONObject expression = res.getJSONObject("expression");
+                    face_expression = expression.getString("type");
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(Function_window.this);
-                    String[] mItems = {"检测到的人脸数量："+face_resultNum ," 性别：" + face_gender, "年龄：" + face_age,  "颜值：" + face_beauty, "笑容：" + face_expression};
+                    String[] mItems = {"检测到的人脸数量：" + face_resultNum, " 性别：" + face_gender, "年龄：" + face_age, "颜值：" + face_beauty, "笑容：" + face_expression};
                     alertDialog.setTitle("人脸识别报告").setItems(mItems, null).create().show();
                 } catch (Exception e) {
                     System.out.println(e);
